@@ -48,7 +48,7 @@ def create_app():
             try:
                 # Запрос к FastAPI
                 response = api_client.post(
-                    "/auth/login",
+                    "/api/v1/auth/login",
                     data={"username": email, "password": password}
                 )
                 response.raise_for_status()
@@ -75,7 +75,7 @@ def create_app():
 
             try:
                 response = api_client.post(
-                    "/auth/register",
+                    "/api/v1/auth/register",
                     data={"email": email, "password": password}
                 )
                 response.raise_for_status()
@@ -103,7 +103,7 @@ def create_app():
 
         try:
             response = api_client.get(
-                "/users/me",
+                "/api/v1/users/me",
                 headers={"Authorization": f"Bearer {access_token}"}
             )
             response.raise_for_status()
@@ -130,7 +130,7 @@ def create_app():
 
         try:
             response = api_client.get(
-                "/admin/stats",
+                "/api/v1/admin/stats",
                 headers={"Authorization": f"Bearer {access_token}"}
             )
             response.raise_for_status()

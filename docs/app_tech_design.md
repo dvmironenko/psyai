@@ -43,6 +43,12 @@ psyai_app/
 ├─ README.md
 ```
 
+## База данных
+
+- хост PostgreSQL: tnas1.mironenko.org:8832
+- логин: psyai_user
+- пароль: psyai_password
+
 ## Модели данных
 
 ### Модель User

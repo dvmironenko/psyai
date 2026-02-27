@@ -5,7 +5,7 @@
 # Документация
 
 Описание приложения: docs/app_brd.md
-Технические требования: docs/app_tech_design.md
+Технический дизайн: docs/app_tech_design.md
 План разработки: docs/app_build_plan.md
 
 # Архитектура проекта
