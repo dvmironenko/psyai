@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Дашборд - PsyAI{% endblock %}
+
+{% block content %}
+<h2>Личный кабинет</h2>
+
+<div class="user-info">
+    <h3>Ваша информация</h3>
+    <ul>
+        <li><strong>ID:</strong> {{ user.id }}</li>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+        <li><strong>Статус:</strong> {% if user.is_active %}Активен{% else %}Неактивен{% endif %}</li>
+        <li><strong>План:</strong> {% if user.plan_id == 0 %}Free{% elif user.plan_id == 1 %}Basic{% elif user.plan_id == 2 %}Premium{% else %}Ultra{% endif %}</li>
+    </ul>
+</div>
+
+<div class="actions">
+    <h3>Действия</h3>
+    <p>Здесь будут доступны функции для Free плана:</p>
+    <ul>
+        <li>Просмотр ресурсов</li>
+        <li>Базовая консультация</li>
+    </ul>
+
+    {% if user.plan_id >= 1 %}
+    <p>Доступно для Basic и выше:</p>
+    <ul>
+        <li>Видеоконсультации</li>
+        <li>Письменные консультации</li>
+    </ul>
+    {% endif %}
+
+    {% if user.plan_id >= 2 %}
+    <p>Доступно для Premium и выше:</p>
+    <ul>
+        <li>Prioritized support</li>
+        <li>Weekly check-ins</li>
+    </ul>
+    {% endif %}
+
+    {% if user.plan_id >= 3 %}
+    <p>Уltra Plan features:</p>
+    <ul>
+        <li>24/7 priority access</li>
+        <li>Personalized AI recommendations</li>
+    </ul>
+    {% endif %}
+</div>
+
+<a href="{{ url_for('logout') }}" class="btn">Выйти</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Психологическое приложениеPsyAI{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h2>Добро пожаловать в PsyAI</h2>
+    <p>Профессиональная помощь психолога в любое время и в любом месте.</p>
+    <div class="features">
+        <h3>Возможности</h3>
+        <ul>
+            <li>Консультации с лицензированными психологами</li>
+            <li>Анонимность и конфиденциальность</li>
+            <li>Гибкий график работы</li>
+            <li>Интеграция с AI для персонализации</li>
+        </ul>
+    </div>
+</div>
+
+<div class="cta">
+    {% if not session.access_token %}
+        <a href="{{ url_for('register') }}" class="btn">Начать сейчас</a>
+        <p>Уже есть аккаунт? <a href="{{ url_for('login') }}">Войдите</a></p>
+    {% else %}
+        <a href="{{ url_for('dashboard') }}" class="btn">Войти в кабинет</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Админка - PsyAI{% endblock %}
+
+{% block content %}
+<h2>Административная панель</h2>
+
+<div class="stats">
+    <h3>Статистика</h3>
+    <div class="stat-grid">
+        <div class="stat-item">
+            <strong>Всего пользователей:</strong>
+            <span>{{ stats.total_users }}</span>
+        </div>
+        <div class="stat-item">
+            <strong>Активных пользователей:</strong>
+            <span>{{ stats.active_users }}</span>
+        </div>
+        <div class="stat-item">
+            <strong>Администраторов:</strong>
+            <span>{{ stats.admin_users }}</span>
+        </div>
+    </div>
+
+    <h4>Распределение по планам:</h4>
+    <ul>
+        {% for plan_name, count in stats.plan_distribution.items() %}
+            <li>{{ plan_name }}: {{ count }} пользователей</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="actions">
+    <h3>Управление</h3>
+    <ul>
+        <li><a href="#">Список пользователей</a></li>
+        <li><a href="#">Управление планами</a></li>
+        <li><a href="#">Журналы событий</a></li>
+    </ul>
+</div>
+
+<a href="{{ url_for('logout') }}" class="btn">Выйти из админки</a>
+{% endblock %}
